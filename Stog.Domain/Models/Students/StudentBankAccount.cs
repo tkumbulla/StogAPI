@@ -1,4 +1,5 @@
-﻿using Stog.Domain.Models.Institutions;
+﻿using Stog.Domain.Models.Generics;
+using Stog.Domain.Models.Institutions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace Stog.Domain.Models.Students
 {
-    public class StudentBankAccount
+    /// <summary>
+    /// Defines the structure for the StudentBankAccount entity.
+    /// </summary>
+    public class StudentBankAccount : AuditableEntity
     {
+        /// <summary>
+        /// ctor
+        /// </summary>
         public StudentBankAccount()
         {
             IBAN = String.Empty;
