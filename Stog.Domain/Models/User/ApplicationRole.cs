@@ -4,8 +4,14 @@ using System.Collections.ObjectModel;
 
 namespace Stog.Domain.Models.User
 {
+    /// <summary>
+    /// Defines the structure for the ApplicationRole entity
+    /// </summary>
     public class ApplicationRole : IdentityRole<Guid>, IAuditable, ISoftDeletable
     {
+        /// <summary>
+        /// ctor
+        /// </summary>
         public  ApplicationRole()
         {
            UserRoles = new Collection<UserRole>();

@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Stog.Data.Mapping.User
 {
+    /// <summary>
+    /// Configuration for the identity user entity
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public abstract class IdentityUserEntityTypeConfiguration<TEntity> : IMappingConfiguration,
         IEntityTypeConfiguration<TEntity>
         where TEntity : IdentityUser

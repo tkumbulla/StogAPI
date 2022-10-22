@@ -11,8 +11,17 @@ using System.Threading.Tasks;
 
 namespace Stog.Data.Extensions
 {
+    /// <summary>
+    /// Extension methods for value conversion
+    /// </summary>
     public static class ValueConversionExtensions
     {
+        /// <summary>
+        /// Serializing values to json
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="propertyBuilder"></param>
+        /// <returns></returns>
         public static PropertyBuilder<T> HasJsonConversion<T>(this PropertyBuilder<T> propertyBuilder)
         {
             var jsonOptions = new JsonSerializerOptions

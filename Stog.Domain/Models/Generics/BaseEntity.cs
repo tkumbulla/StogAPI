@@ -15,13 +15,18 @@ namespace Stog.Domain.Models.Generics
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual Guid Id { get; set; }
-
+        /// <summary>
+        /// Returns the identifier of the entity
+        /// </summary>
+        /// <returns></returns>
         public virtual object GetId()
         {
             return $"({Id})";
         }
     }
-
+    /// <summary>
+    /// Defines the structure of the Auditable entity class
+    /// </summary>
     public abstract class AuditableEntity : BaseEntity, IAuditable, ISoftDeletable
     {
         #region Implementation of IAuditable

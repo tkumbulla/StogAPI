@@ -47,7 +47,6 @@ namespace StogAPI
                // mvcConfiguration.RegisterValidatorsFromAssemblyContaining<Validator>();
             }
             );
-
             string jwtSecret = configuration.GetSection("JWT")["SecretKey"];
             // For Identity
             services.AddIdentity<ApplicationUser, ApplicationRole>()

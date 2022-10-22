@@ -16,11 +16,15 @@ namespace StogAPI.Extensions
         /// <returns></returns>
         public static bool RemoveErrors(this ModelStateDictionary modelState, string key)
         {
-
+            modelState = new ModelStateDictionary();
+            key = string.Empty;
             if (modelState.ContainsKey(key))
             {
-                modelState[key].Errors.Clear();
-                modelState[key].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
+                if(modelState[key] != null)
+                {
+                    modelState[key]?.Errors.Clear();
+                    modelState[key].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid; 
+                }
 
                 return true;
             }

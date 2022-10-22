@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace Stog.Domain.Models.Common
 {
+    /// <summary>
+    /// Defines the structure of the File entity.
+    /// </summary>
     public class File : AuditableEntity
     {
+        /// <summary>
+        /// ctor
+        /// </summary>
         public File()
         {
             Name = string.Empty;

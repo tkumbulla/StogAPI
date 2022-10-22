@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Stog.Domain.Models.Institutions
 {
+    /// <summary>
+    /// Defines the structure of the FinancialInstitution entity.
+    /// </summary>
     public class FinancialInstitution : AuditableEntity
     {
 
