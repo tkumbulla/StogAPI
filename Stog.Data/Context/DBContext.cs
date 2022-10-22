@@ -18,13 +18,20 @@ using System.Threading.Tasks;
 
 namespace Stog.Data.Context
 {
+    /// <summary>
+    /// Defines the structure of the DBContext class. All configurations for database context go here.
+    /// </summary>
     public class DBContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid, IdentityUserClaim<Guid>,
     UserRole, IdentityUserLogin<Guid>,
     IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>, IDbContext
     {
         private readonly IAuthenticationService _authenticationService;
         #region Ctor
-
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="options"></param>
+        /// <param name="authenticationService"></param>
         public DBContext(Microsoft.EntityFrameworkCore.DbContextOptions<DBContext> options, IAuthenticationService authenticationService)
         : base(options)
         {

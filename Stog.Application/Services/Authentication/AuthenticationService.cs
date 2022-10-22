@@ -140,7 +140,8 @@ namespace Stog.Application.Services.Authentication
 
         private async Task<AuthenticatedUser?> GetAuthenticatedUserFromClaimsAsync()
         {
-                var authenticateResult =
+            if (_httpContextAccessor.HttpContext == null) throw new AuthenticationException("Internal error. Null value for HttpContext.");
+            var authenticateResult =
                 await _httpContextAccessor.HttpContext.AuthenticateAsync(AuthenticationSettings.AuthenticationScheme);
 
                 if (!authenticateResult.Succeeded)

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Stog.Data.Context
 {
+    /// <summary>
+    /// Defines the structure of the IDbContext interface.
+    /// </summary>
     public interface IDbContext
     {
         
@@ -60,8 +63,18 @@ namespace Stog.Data.Context
         /// <param name="entity">Entity.</param>
         void Detach<TEntity>(TEntity entity) where TEntity : BaseEntity;
 
-
+        /// <summary>
+        /// Entity entry
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         EntityEntry Entry(object entity);
+        /// <summary>
+        /// Entity entry
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
 
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
 
