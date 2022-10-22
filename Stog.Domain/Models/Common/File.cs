@@ -17,7 +17,6 @@ namespace Stog.Domain.Models.Common
             ContentType = string.Empty;
             PhysicalPath = string.Empty;
             VirtualPath = string.Empty;
-            User = new ApplicationUser();
         }
 
         /// <summary>
@@ -44,15 +43,5 @@ namespace Stog.Domain.Models.Common
         /// Gets or sets the physical path
         /// </summary>
         public string PhysicalPath { get; set; }
-
-        #region Referential
-
-
-        /// <summary>
-        /// Gets or sets the user
-        /// </summary>
-        public virtual ApplicationUser User { get; set; }
-
-        #endregion
     }
 }

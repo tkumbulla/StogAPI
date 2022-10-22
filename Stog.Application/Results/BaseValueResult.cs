@@ -6,9 +6,10 @@
     /// <typeparam name="TValue"></typeparam>
     public abstract class BaseValueResult<TValue> : BaseResult
     {
+
         /// <summary>
         /// The value of the base result
         /// </summary>
-        public TValue Value { get; set; }
+        public TValue? Value { get; set; }
     }
 }
