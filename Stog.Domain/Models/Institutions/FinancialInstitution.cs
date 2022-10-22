@@ -36,5 +36,13 @@ namespace Stog.Domain.Models.Institutions
         /// Phone number of the Institution
         /// </summary>
         public string PhoneNumber { get; set; }
+        /// <summary>
+        /// The url of the institution's official website
+        /// </summary>
+        public string WebsiteUrl { get; set; }
+        /// <summary>
+        /// The nuis of the institituion
+        /// </summary>
+        public string Nuis { get; set; }
     }
 }
