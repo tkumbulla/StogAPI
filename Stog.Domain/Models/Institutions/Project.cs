@@ -26,11 +26,11 @@ namespace Stog.Domain.Models.Institutions
         /// <summary>
         /// The opening date of the applications for this project
         /// </summary>
-        public DateOnly StartDate { get; set; }
+        public DateTime StartDate { get; set; }
         /// <summary>
         /// Closing date of the applications
         /// </summary>
-        public DateOnly EndDate { get; set; }
+        public DateTime EndDate { get; set; }
         /// <summary>
         /// Estimated complition time of the project from the starting date
         /// </summary>

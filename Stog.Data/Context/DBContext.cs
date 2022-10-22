@@ -196,14 +196,16 @@ namespace Stog.Data.Context
             {
                 applicationUser.HasKey(au => au.Id);
                 applicationUser.HasOne(au => au.CreatedBy)
-                .WithOne()
-                .HasForeignKey<ApplicationUser>(au => au.CreatedById)
-        .OnDelete(DeleteBehavior.Cascade);
+               .WithMany()
+               .HasForeignKey(au => au.CreatedById)
+       .OnDelete(DeleteBehavior.Restrict);
 
                 applicationUser.HasOne(au => au.UpdatedBy)
-               .WithOne()
-               .HasForeignKey<ApplicationUser>(au => au.UpdatedById)
+               .WithMany()
+               .HasForeignKey(au => au.UpdatedById)
         .OnDelete(DeleteBehavior.Restrict);
+
+
             });
         }
         protected virtual LambdaExpression? ApplyEntityFilterTo(System.Type entityClrType)
