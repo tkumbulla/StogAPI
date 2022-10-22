@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Stog.Application.Interfaces.Authentication;
+using Stog.Application.Interfaces.User;
 using Stog.Application.Services.Authentication;
+using Stog.Application.Services.User;
 using Stog.Data.Context;
 using Stog.Data.Repositories;
 using Stog.Domain.Interfaces;
@@ -21,6 +23,7 @@ namespace Stog.Ioc
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IDbContext, DbContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }
