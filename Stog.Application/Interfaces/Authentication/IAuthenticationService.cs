@@ -1,5 +1,6 @@
 ﻿using Stog.Application.Results;
 using Stog.Application.Services.Authentication;
+using Stog.Domain.Models.User;
 
 namespace Stog.Application.Interfaces.Authentication
 {

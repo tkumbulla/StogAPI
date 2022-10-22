@@ -6,6 +6,8 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using FluentValidation.AspNetCore;
 using Stog.Application.Models;
+using Stog.Domain.Models.User;
+
 namespace StogAPI
 {
     /// <summary>
@@ -41,7 +43,7 @@ namespace StogAPI
             services.AddHttpContextAccessor();
             services.AddControllers().AddFluentValidation(mvcConfiguration =>
             {
-                mvcConfiguration.RegisterValidatorsFromAssemblyContaining<Validator>();
+               // mvcConfiguration.RegisterValidatorsFromAssemblyContaining<Validator>();
             }
             );
 
@@ -110,7 +112,7 @@ namespace StogAPI
 
 
 
-            DependencyContainer.RegisterServices(services);
+            //DependencyContainer.RegisterServices(services);
             services.AddDbContext<DbContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection"), providerOptions => providerOptions.EnableRetryOnFailure()));

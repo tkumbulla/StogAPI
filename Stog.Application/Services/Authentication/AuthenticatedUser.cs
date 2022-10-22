@@ -1,4 +1,5 @@
 ﻿using Stog.Application.Models;
+using Stog.Domain.Models.User;
 using System;
 using System.Collections.Generic;
 

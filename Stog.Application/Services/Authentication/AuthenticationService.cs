@@ -4,13 +4,14 @@ using System.Security.Claims;
 using System.Globalization;
 using System.Security.Authentication;
 using Microsoft.AspNetCore.Authentication;
+using Stog.Domain.Models.User;
 
 namespace Stog.Application.Services.Authentication
 {
     /// <summary>
     /// Authentication and authorization management service.
     /// </summary>
-    public class AuthenticationService : Interfaces.Authentication.IAuthenticationService
+    public class AuthenticationService : Stog.Application.Interfaces.Authentication.IAuthenticationService
     {
         // dependencies
         private readonly IHttpContextAccessor _httpContextAccessor;
