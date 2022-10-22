@@ -16,6 +16,7 @@ namespace Stog.Application.Services.Authentication
             Name = string.Empty;
             Username = string.Empty;
             Password = string.Empty;
+            UserRoles = new List<UserRole>();
         }
 
         /// <summary>

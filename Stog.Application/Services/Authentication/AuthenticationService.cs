@@ -50,9 +50,10 @@ namespace Stog.Application.Services.Authentication
                 IssuedUtc = DateTime.UtcNow
             };
 
-            //sign in
-            await _httpContextAccessor.HttpContext.SignInAsync(AuthenticationSettings.AuthenticationScheme, userPrincipal, authenticationProperties);
-
+            if (_httpContextAccessor.HttpContext != null)
+                //sign in
+                await _httpContextAccessor.HttpContext.SignInAsync(AuthenticationSettings.AuthenticationScheme, userPrincipal, authenticationProperties);
+            else return Result.Fail("Unable to sign in.");
             return Result.Ok();
         }
 
@@ -64,6 +65,7 @@ namespace Stog.Application.Services.Authentication
             //reset cached user
             _cachedUser = null;
 
+            if(_httpContextAccessor.HttpContext != null)
             //and sign out from the current authentication scheme
             await _httpContextAccessor.HttpContext.SignOutAsync(AuthenticationSettings.AuthenticationScheme);
         }
@@ -138,43 +140,43 @@ namespace Stog.Application.Services.Authentication
 
         private async Task<AuthenticatedUser?> GetAuthenticatedUserFromClaimsAsync()
         {
-            var authenticateResult =
+                var authenticateResult =
                 await _httpContextAccessor.HttpContext.AuthenticateAsync(AuthenticationSettings.AuthenticationScheme);
 
-            if (!authenticateResult.Succeeded)
-                return null;
-            //throw new AuthenticationException("No user is logged in.");
+                if (!authenticateResult.Succeeded)
+                    return null;
+                //throw new AuthenticationException("No user is logged in.");
 
 
-            // get claims
-            var idClaim = authenticateResult.Principal.FindFirst(claim =>
-                claim.Type == ClaimTypes.Sid &&
-                claim.Issuer.Equals(AuthenticationSettings.ClaimsIssuer, StringComparison.InvariantCultureIgnoreCase));
+                // get claims
+                var idClaim = authenticateResult.Principal.FindFirst(claim =>
+                    claim.Type == ClaimTypes.Sid &&
+                    claim.Issuer.Equals(AuthenticationSettings.ClaimsIssuer, StringComparison.InvariantCultureIgnoreCase));
 
-            var nameClaim = authenticateResult.Principal.FindFirst(claim =>
-                claim.Type == ClaimTypes.Name &&
-                claim.Issuer.Equals(AuthenticationSettings.ClaimsIssuer, StringComparison.InvariantCultureIgnoreCase));
+                var nameClaim = authenticateResult.Principal.FindFirst(claim =>
+                    claim.Type == ClaimTypes.Name &&
+                    claim.Issuer.Equals(AuthenticationSettings.ClaimsIssuer, StringComparison.InvariantCultureIgnoreCase));
 
-            var usernameClaim = authenticateResult.Principal.FindFirst(claim =>
-                claim.Type == ClaimTypes.NameIdentifier &&
-                claim.Issuer.Equals(AuthenticationSettings.ClaimsIssuer, StringComparison.InvariantCultureIgnoreCase));
+                var usernameClaim = authenticateResult.Principal.FindFirst(claim =>
+                    claim.Type == ClaimTypes.NameIdentifier &&
+                    claim.Issuer.Equals(AuthenticationSettings.ClaimsIssuer, StringComparison.InvariantCultureIgnoreCase));
 
-            var roleClaim = authenticateResult.Principal.FindAll(claim =>
-                claim.Type == ClaimTypes.Role &&
-                claim.Issuer.Equals(AuthenticationSettings.ClaimsIssuer, StringComparison.InvariantCultureIgnoreCase));
+                var roleClaim = authenticateResult.Principal.FindAll(claim =>
+                    claim.Type == ClaimTypes.Role &&
+                    claim.Issuer.Equals(AuthenticationSettings.ClaimsIssuer, StringComparison.InvariantCultureIgnoreCase));
 
-            // means user is found
-            if (idClaim == null)
-                return null;
-            //throw new AuthenticationException("No user is logged in. (Claims not found)");
+                // means user is found
+                if (idClaim == null)
+                    return null;
+                //throw new AuthenticationException("No user is logged in. (Claims not found)");
 
-            var authenticatedUser = new AuthenticatedUser
-            {
-                Id = Guid.Parse(idClaim.Value),
-                Name = nameClaim.Value,
-                Username = usernameClaim.Value
-            };
-            return authenticatedUser;
+                var authenticatedUser = new AuthenticatedUser
+                {
+                    Id = Guid.Parse(idClaim.Value),
+                    Name = nameClaim?.Value ?? "",
+                    Username = usernameClaim?.Value ?? ""
+                };
+                return authenticatedUser;
         }
 
         #endregion

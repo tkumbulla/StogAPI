@@ -19,6 +19,8 @@ namespace Stog.Domain.Models.Institutions
             Description = string.Empty;
             Email = string.Empty;
             PhoneNumber = string.Empty;
+            WebsiteUrl = string.Empty;
+            Nuis = string.Empty;
         }
         /// <summary>
         ///   Name of the Institution
@@ -44,5 +46,11 @@ namespace Stog.Domain.Models.Institutions
         /// The nuis of the institituion
         /// </summary>
         public string Nuis { get; set; }
+        #region Referential
+        /// <summary>
+        /// The projects of the institution
+        /// </summary>
+        public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
+        #endregion
     }
 }
