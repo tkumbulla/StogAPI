@@ -8,6 +8,7 @@ using FluentValidation.AspNetCore;
 using Stog.Application.Models;
 using Stog.Domain.Models.User;
 using Stog.Ioc;
+using Stog.Data.Context;
 
 namespace StogAPI
 {
@@ -50,7 +51,7 @@ namespace StogAPI
             string jwtSecret = configuration.GetSection("JWT")["SecretKey"];
             // For Identity
             services.AddIdentity<ApplicationUser, ApplicationRole>()
-            .AddEntityFrameworkStores<DbContext>()
+            .AddEntityFrameworkStores<DBContext>()
             .AddDefaultTokenProviders();
             // Adding Authentication
             services.AddAuthentication(options =>
@@ -113,7 +114,7 @@ namespace StogAPI
 
 
             DependencyContainer.RegisterServices(services);
-            services.AddDbContext<DbContext>(options =>
+            services.AddDbContext<DBContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection"), providerOptions => providerOptions.EnableRetryOnFailure()));
 
