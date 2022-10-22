@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Stog.Domain.Models.Students
 {
+    /// <summary>
+    /// Defines the structure of the Transactions entity.
+    /// </summary>
     public class Transactions : AuditableEntity
     {
         /// <summary>
