@@ -319,7 +319,7 @@ namespace Stog.Application.Services.User
             Student student = new Student()
             {
                 SSN = model.SSN,
-                StudentCardId = Guid.Parse(""),
+                StudentCardId = Guid.Parse("8549FA48-EAD2-48EB-A06E-9F599412C152"),
                 CreatedById = Guid.Parse("223FC8FD-641A-486C-B4C6-39D6F803BF03"),
                 CreatedOnUtc = DateTime.UtcNow,
                 IsActive = true,
