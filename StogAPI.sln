@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StogAPI", "StogAPI\StogAPI.csproj", "{1251C1FC-1EEF-43A4-BCC4-8AF023A44952}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StogAPI", "StogAPI\StogAPI.csproj", "{1251C1FC-1EEF-43A4-BCC4-8AF023A44952}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stog.Domain", "Stog.Domain\Stog.Domain.csproj", "{807192BC-FED2-4394-8E00-39DC941EF8F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stog.Data", "Stog.Data\Stog.Data.csproj", "{5EE088F0-FBD7-416F-A064-CA39762F67DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stog.Ioc", "Stog.Ioc\Stog.Ioc.csproj", "{24CFB8A2-9144-4B99-B9DF-0D8271DA33CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stog.Application", "Stog.Application\Stog.Application.csproj", "{4E7E4DBB-B891-497F-9D17-40E99EB03106}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1251C1FC-1EEF-43A4-BCC4-8AF023A44952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1251C1FC-1EEF-43A4-BCC4-8AF023A44952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1251C1FC-1EEF-43A4-BCC4-8AF023A44952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E7E4DBB-B891-497F-9D17-40E99EB03106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E7E4DBB-B891-497F-9D17-40E99EB03106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E7E4DBB-B891-497F-9D17-40E99EB03106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E7E4DBB-B891-497F-9D17-40E99EB03106}.Release|Any CPU.Build.0 = Release|Any CPU
 		{807192BC-FED2-4394-8E00-39DC941EF8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{807192BC-FED2-4394-8E00-39DC941EF8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{807192BC-FED2-4394-8E00-39DC941EF8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
