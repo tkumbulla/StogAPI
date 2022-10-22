@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Content\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Stog.Application\Stog.Application.csproj" />
     <ProjectReference Include="..\Stog.Data\Stog.Data.csproj" />
     <ProjectReference Include="..\Stog.Ioc\Stog.Ioc.csproj" />

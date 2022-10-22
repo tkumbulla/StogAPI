@@ -127,5 +127,25 @@ namespace Stog.Application.Models.User
         /// True if the record is deleted
         /// </summary>
         public bool IsDeleted { get; set; }
+        /// <summary>
+        /// The social security number of the student
+        /// </summary>
+        public string SSN { get; set; }
+        /// <summary>
+        /// Gets or sets the virtual path of the student card file
+        /// </summary>
+        public string? VirtualPath { get; set; }
+        /// <summary>
+        /// Gets or sets the physical path of the student card file
+        /// </summary>
+        public string? PhysicalPath { get; set; }
+        /// <summary>
+        /// Gets or sets the content type of the student card file
+        /// </summary>
+        public string? ContentType { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the student card file
+        /// </summary>
+        public string? FileName { get; set; }
     }
 }

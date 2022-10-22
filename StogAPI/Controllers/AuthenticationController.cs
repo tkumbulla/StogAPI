@@ -46,14 +46,14 @@ namespace StogAPI.Controllers
 
         [HttpPost]
         [Route("Register")]
-        [Authorize]
         public async Task<IActionResult> Register([FromBody] CreateUserModel model)
         {
-           
-            var admin = await _userService.GetCurrentUserDetailsAsync();
             var userExists = await userManager.FindByNameAsync(model.Username);
             if (userExists != null)
-                return BadRequest("Një përdorues me këtë emër egziston!");
+                return BadRequest("A user with this email account already exists.");
+            var studentResult = _userService.CreateStudent(model);
+            if (!studentResult.Success) return BadRequest("Something went wrong. Please try again.");
+
             ApplicationUser user = new()
             {
                 Id = Guid.NewGuid(),
@@ -62,15 +62,16 @@ namespace StogAPI.Controllers
                 NormalizedUserName = model.Username.ToLower(),
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                CreatedById = admin.Id.Value,
+                CreatedById = Guid.Parse("223FC8FD-641A-486C-B4C6-39D6F803BF03"),
                 CreatedOnUtc = DateTime.Now,
-                UserName = model.Username
+                UserName = model.Username,
+                StudentId = studentResult.Value
             };
 
             var result = await userManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
-                return BadRequest("Dicka shkoi keq , ju lutem kontrolloni të dhënat e vendosura!");
+                return BadRequest("Something went wrong. Please try again.");
 
             var role = await roleManager.FindByIdAsync(model.RoleId.ToString());
             if (role != null)
@@ -90,8 +91,8 @@ namespace StogAPI.Controllers
         [SwaggerOperation("Log in")]
         public async Task<IActionResult> Login([FromBody] LogInModel model)
         {
-            //var user = await userManager.FindByNameAsync(model.Username);
-            var user = await userManager.Users.FirstOrDefaultAsync(x => x.UserName == model.Username);
+            var user = await userManager.FindByNameAsync(model.Username);
+            //var user = await userManager.Users.FirstOrDefaultAsync(x => x.UserName == model.Username);
             if (user == null)
             {
                 return Unauthorized(new Message("Nuk ekziston përdoruesi"));

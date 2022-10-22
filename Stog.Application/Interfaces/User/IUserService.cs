@@ -85,5 +85,11 @@ namespace Stog.Application.Interfaces.User
         /// <param name="model"></param>
         /// <returns></returns>
         Task<Result> ChangePassword(ChangePasswordModel model);
+        /// <summary>
+        /// Create a new student
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Result<Guid> CreateStudent(CreateUserModel model);
     }
 }

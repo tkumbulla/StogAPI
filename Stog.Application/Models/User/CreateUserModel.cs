@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Stog.Application.Models.User
             Username = String.Empty;
             Email = String.Empty;
             Password = String.Empty;
+            SSN = String.Empty;
         }
         /// <summary>
         /// Property to keep the user's first name 
@@ -52,6 +54,10 @@ namespace Stog.Application.Models.User
         /// Indicates that the user is an active user of the system
         /// </summary>
         public bool IsActive { get; set; }
+        /// <summary>
+        /// The social security number of the student
+        /// </summary>
+        public string SSN { get; set; }
         /// <summary>
         /// Validation
         /// </summary>

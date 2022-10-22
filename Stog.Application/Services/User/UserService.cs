@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Stog.Application.Interfaces.User;
 using Stog.Application.Models.User;
 using Stog.Application.Results;
+using Stog.Domain.Interfaces;
+using Stog.Domain.Models.Students;
 using Stog.Domain.Models.User;
 using System;
 using System.Collections.Generic;
@@ -25,17 +27,20 @@ namespace Stog.Application.Services.User
 
         private readonly IHttpContextAccessor _httpContext;
 
+        private readonly IRepository<Student> _studentRepository;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="UserService"/> class.
         /// </summary>
         /// <param name="userManager">.</param>
         /// <param name="roleManager">.</param>
         /// <param name="httpContext">The httpContext<see cref="IHttpContextAccessor"/>.</param>
-        public UserService(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager, IHttpContextAccessor httpContext)
+        public UserService(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager, IHttpContextAccessor httpContext, IRepository<Student> studentRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _httpContext = httpContext;
+            _studentRepository = studentRepository;
         }
 
         /// <summary>
@@ -150,7 +155,14 @@ namespace Stog.Application.Services.User
             }
             else
             {
+                var student = _studentRepository.TableNoTracking.Include(x => x.StudentCard).FirstOrDefault(x => x.Id == user.StudentId);
+                if(student == null) throw new ArgumentNullException("Could not find student.");
                 var userDetails = new UserModel(user);
+                userDetails.SSN = student.SSN;
+                userDetails.PhysicalPath = student.StudentCard?.PhysicalPath;
+                userDetails.VirtualPath = student.StudentCard?.VirtualPath;
+                userDetails.FileName = student.StudentCard?.Name;
+                userDetails.ContentType = student.StudentCard?.ContentType;
                 return userDetails;
             }
         }
@@ -296,6 +308,25 @@ namespace Stog.Application.Services.User
             {
                 return Result.Fail("Cannot change password. Password must contain at least 8 characters.");
             }
+        }
+        /// <summary>
+        /// Create a new student
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public Result<Guid> CreateStudent(CreateUserModel model)
+        {
+            Student student = new Student()
+            {
+                SSN = model.SSN,
+                StudentCardId = Guid.Parse(""),
+                CreatedById = Guid.Parse("223FC8FD-641A-486C-B4C6-39D6F803BF03"),
+                CreatedOnUtc = DateTime.UtcNow,
+                IsActive = true,
+                IsDeleted = false
+            };
+            _studentRepository.Insert(student);
+            return Result.Ok<Guid>(student.Id);
         }
     }
 }
