@@ -7,6 +7,7 @@ using System.Text;
 using FluentValidation.AspNetCore;
 using Stog.Application.Models;
 using Stog.Domain.Models.User;
+using Stog.Ioc;
 
 namespace StogAPI
 {
@@ -112,7 +113,7 @@ namespace StogAPI
 
 
 
-            //DependencyContainer.RegisterServices(services);
+            DependencyContainer.RegisterServices(services);
             services.AddDbContext<DbContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection"), providerOptions => providerOptions.EnableRetryOnFailure()));

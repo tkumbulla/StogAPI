@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Stog.Application\Stog.Application.csproj" />
+    <ProjectReference Include="..\Stog.Data\Stog.Data.csproj" />
+  </ItemGroup>
+
 </Project>
