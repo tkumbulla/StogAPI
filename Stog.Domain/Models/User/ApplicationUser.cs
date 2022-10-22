@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Stog.Domain.Models.Generics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace Stog.Domain.Models.User
 {
@@ -20,6 +16,8 @@ namespace Stog.Domain.Models.User
         {
             FirstName = String.Empty;
             LastName = String.Empty;
+            DisplayUserName = String.Empty;
+            UserRoles = new Collection<UserRole>();
         }
         /// <summary>
         ///  First name of the user
@@ -33,14 +31,6 @@ namespace Stog.Domain.Models.User
         ///  Full name of the user
         /// </summary>
         public string FullName => FirstName + " " + LastName;
-        /// <summary>
-        /// The first name stored without any ë or ç characters
-        /// </summary>
-        public string FirstNameForSearch { get; set; }
-        /// <summary>
-        /// The last name stored without any ë or ç characters
-        /// </summary>
-        public string LastNameForSearch { get; set; }
         /// <summary>
         /// The username as it will be displayed
         /// </summary>

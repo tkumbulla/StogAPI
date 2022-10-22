@@ -9,6 +9,11 @@ namespace Stog.Domain.Models.User
 {
     public class UserRole : IdentityUserRole<Guid>
     {
+        public UserRole()
+        {
+            User = new ApplicationUser();
+            Role = new ApplicationRole();
+        }
         public virtual ApplicationUser User { get; set; }
         public virtual ApplicationRole Role { get; set; }
     }

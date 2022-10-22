@@ -1,10 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Stog.Domain.Models.Generics;
+using System.Collections.ObjectModel;
 
 namespace Stog.Domain.Models.User
 {
     public class ApplicationRole : IdentityRole<Guid>, IAuditable, ISoftDeletable
     {
+        public  ApplicationRole()
+        {
+           UserRoles = new Collection<UserRole>();
+        }
         /// <summary>
         /// Collection of users containing this role
         /// </summary>
