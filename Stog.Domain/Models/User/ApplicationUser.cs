@@ -49,6 +49,15 @@ namespace Stog.Domain.Models.User
         /// Object of the role
         /// </summary>
         public ICollection<UserRole> UserRoles { get; set; }
+        /// <summary>
+        /// Gets or sets the identifier of the student, if the user is a student.
+        /// </summary>
+        public Guid? StudentId { get; set; }
+        /// <summary>
+        /// Gets or sets the identifier of the institution, if the user is an institution.
+        /// </summary>
+        public Guid? InstitutionId { get; set; }
+
 
         #region Implementation of IAuditable
 
