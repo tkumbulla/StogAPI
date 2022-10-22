@@ -18,7 +18,7 @@ namespace Stog.Domain.Models.Students
         public Student()
         {
             SSN = String.Empty;
-            StudentCard = new Common.File();
+            //StudentCard = new Common.File();
         }
         /// <summary>
         /// The social security number of the student
