@@ -19,7 +19,7 @@ namespace Stog.Domain.Models.Students
         public StudentBankAccount()
         {
             IBAN = String.Empty;
-            FinancialInstitution = new FinancialInstitution();
+            //FinancialInstitution = new FinancialInstitution();
         }
         /// <summary>
         /// The iban of the student

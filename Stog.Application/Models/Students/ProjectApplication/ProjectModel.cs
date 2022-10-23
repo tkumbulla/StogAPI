@@ -7,19 +7,28 @@ using System.Threading.Tasks;
 
 namespace Stog.Application.Models.Students.ProjectApplication
 {
-    /// <summary>
-    /// Details for a single item on the list of user applications
-    /// </summary>
-    public class ProjectApplicationDetailModel
+    public class ProjectModel
     {
         /// <summary>
-        /// The identifier of the application
+        /// The identifier of the project 
         /// </summary>
-        public Guid ApplicationId { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
-        /// The identifier of the project the application corresponds to
+        /// The id of the file that is submited from the institution as a requirement list for the project
         /// </summary>
-        public Guid ProjectId { get; set; }
+        public Guid RequirementFileId { get; set; }
+        /// <summary>
+        /// The virtual path of the requirement file
+        /// </summary>
+        public string? RequirementFileVirtualPath { get; set; }
+        /// <summary>
+        /// The content type of the requirement file
+        /// </summary>
+        public string? RequirementFileContentType { get; set; }
+        /// <summary>
+        /// The name of the requirement file
+        /// </summary>
+        public string? RequirementFileName { get; set; }
         /// <summary>
         /// The status of the application
         /// </summary>
@@ -28,6 +37,11 @@ namespace Stog.Application.Models.Students.ProjectApplication
         ///   Title of the project
         /// </summary>
         public string? ProjectTitle { get; set; }
+
+        /// <summary>
+        ///   Description of the project
+        /// </summary>
+        public string? ProjectDescription { get; set; }
         /// <summary>
         /// Shows the institution that the project corresponds to
         /// </summary>
@@ -37,9 +51,13 @@ namespace Stog.Application.Models.Students.ProjectApplication
         /// </summary>
         public string? FinancialInstitutionName { get; set; }
         /// <summary>
-        /// The date the application was submitted
+        /// Start date
         /// </summary>
-        public string? ApplicationDate { get; set; }
+        public string? StartDate { get; set; }
+        /// <summary>
+        /// End date
+        /// </summary>
+        public string? EndDate { get; set; }
         /// <summary>
         /// The budget of the project
         /// </summary>

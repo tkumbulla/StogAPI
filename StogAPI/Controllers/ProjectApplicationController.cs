@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Stog.Application.Interfaces.Authentication;
 using Stog.Application.Interfaces.Students;
+using Stog.Application.Models.Students.ProjectApplication;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace StogAPI.Controllers
@@ -37,6 +38,26 @@ namespace StogAPI.Controllers
             var result = _projectApplicationService.GetSubmittedApplications();
             if (result.Success) return Ok(result.Value);
             return BadRequest("Could not get submitted applications list.");
+        }
+        [HttpPost]
+        [Route("apply")]
+        [SwaggerOperation("Submit an application for a project")]
+        [Authorize]
+        public IActionResult SubmitApplication([FromForm] ApplyPostRequest request)
+        {
+            var result = _projectApplicationService.Apply(request);
+            if (result.Success) return Ok();
+            return BadRequest("Could not submit.");
+        }
+        [HttpGet]
+        [Route("projects")]
+        [SwaggerOperation("List of projects where user has not applied yet")]
+        [Authorize]
+        public IActionResult GetProjects()
+        {
+            var result = _projectApplicationService.GetProjects();
+            if (result.Success) return Ok(result.Value);
+            return BadRequest("Could not get projects list.");
         }
     }
 }

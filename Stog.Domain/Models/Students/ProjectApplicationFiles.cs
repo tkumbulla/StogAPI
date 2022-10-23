@@ -15,8 +15,8 @@ namespace Stog.Domain.Models.Students
         /// </summary>
         public ProjectApplicationFiles()
         {
-            ProjectApplication = new ProjectApplication();
-            File = new Common.File();
+            //ProjectApplication = new ProjectApplication();
+            //File = new Common.File();
         }
         /// <summary>
         /// Identifier of the Project Application 

@@ -76,11 +76,11 @@ namespace StogAPI.Controllers
             if (!result.Succeeded)
                 return BadRequest("Something went wrong. Please try again.");
 
-            var role = await roleManager.FindByNameAsync("Student");
-            if (role != null)
-            {
-                await userManager.AddToRoleAsync(user, role.Name);
-            }
+            //var role = await roleManager.FindByNameAsync("Student");
+            //if (role != null)
+            //{
+            //    await userManager.AddToRoleAsync(user, role.Name);
+            //}
             return Ok();
         }
 

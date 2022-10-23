@@ -16,7 +16,7 @@ namespace Stog.Domain.Models.Institutions
         public Program()
         {
             Name = String.Empty;
-            University = new University();
+           // University = new University();
         }
         /// <summary>
         /// Name of the program

@@ -11,15 +11,15 @@ namespace Stog.Domain.Models.Students
 {
     public class StudiesApplication : AuditableEntity
     {
-        /// <summary>
-        /// Ctor
-        /// </summary>
-        public StudiesApplication()
-        {
-            Program = new Program();
-            Student = new Student();
-            AdditionalNotes = String.Empty;
-        }
+        ///// <summary>
+        ///// Ctor
+        ///// </summary>
+        //public StudiesApplication()
+        //{
+        //    Program = new Program();
+        //    Student = new Student();
+        //    AdditionalNotes = String.Empty;
+        //}
         /// <summary>
         /// The id of the program student is applying for  
         /// </summary>

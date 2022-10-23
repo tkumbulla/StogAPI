@@ -18,5 +18,15 @@ namespace Stog.Application.Interfaces.Students
         /// </summary>
         /// <returns></returns>
         Result<ProjectApplicationListModel> GetSubmittedApplications();
+        /// <summary>
+        /// Method needed to submit an application.
+        /// </summary>
+        /// <param name="request"></param>
+        Result Apply(ApplyPostRequest request);
+        /// <summary>
+        /// Get all projects where user has not applied yet.
+        /// </summary>
+        /// <returns></returns>
+        Result<List<ProjectModel>> GetProjects();
     }
 }

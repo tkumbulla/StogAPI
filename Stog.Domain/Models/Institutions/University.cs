@@ -15,7 +15,7 @@ namespace Stog.Domain.Models.Institutions
        public University()
         {
             Name = String.Empty;
-            FinancialInstitution = new FinancialInstitution();
+            //FinancialInstitution = new FinancialInstitution();
         }
         /// <summary>
         /// Name of the university

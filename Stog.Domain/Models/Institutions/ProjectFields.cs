@@ -9,14 +9,14 @@ namespace Stog.Domain.Models.Institutions
 {
     public class ProjectFields : BaseEntity
     {
-        /// <summary>
-        /// Ctor
-        /// </summary>
-        public ProjectFields()
-        {
-            Project = new Project();
-            Field = new Field();
-        }
+        ///// <summary>
+        ///// Ctor
+        ///// </summary>
+        //public ProjectFields()
+        //{
+        //    Project = new Project();
+        //    Field = new Field();
+        //}
         /// <summary>
         /// Identifier of the Project 
         /// </summary>

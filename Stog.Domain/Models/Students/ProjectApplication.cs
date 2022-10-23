@@ -6,16 +6,16 @@ namespace Stog.Domain.Models.Students
 {
     public class ProjectApplication :AuditableEntity
     {
-        /// <summary>
-        /// Ctor
-        /// </summary>
-        public ProjectApplication()
-        {
-            Project = new Project();
-            Student = new Student(); 
-            AdditionalNotes = String.Empty;
-            ProposalFile = new Common.File();
-        }
+        ///// <summary>
+        ///// Ctor
+        ///// </summary>
+        //public ProjectApplication()
+        //{
+        //    Project = new Project();
+        //    Student = new Student(); 
+        //    AdditionalNotes = String.Empty;
+        //    ProposalFile = new Common.File();
+        //}
         /// <summary>
         /// The id of the project student is applying for  
         /// </summary>

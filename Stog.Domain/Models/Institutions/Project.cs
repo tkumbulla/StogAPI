@@ -12,8 +12,8 @@ namespace Stog.Domain.Models.Institutions
         {
             Title = string.Empty;
             Description = string.Empty;
-            FinancialInstitution = new FinancialInstitution();
-            RequirementFile = new Common.File();
+           // FinancialInstitution = new FinancialInstitution();
+           // RequirementFile = new Common.File();
         }
         /// <summary>
         ///   Title of the project
