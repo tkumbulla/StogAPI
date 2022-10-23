@@ -48,5 +48,6 @@ namespace Stog.Application.Services.Authentication
         /// Gets or sets code list detail name.
         /// </summary>
         public string? CodeListDetailValue { get; set; }
+        public Guid? StudentId { get; set; }
     }
 }

@@ -147,5 +147,9 @@ namespace Stog.Application.Models.User
         /// Gets or sets the name of the student card file
         /// </summary>
         public string? FileName { get; set; }
+        /// <summary>
+        /// The identifier of the student
+        /// </summary>
+        public Guid? StudentId { get; set; }
     }
 }

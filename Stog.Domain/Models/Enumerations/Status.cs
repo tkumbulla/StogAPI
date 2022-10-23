@@ -9,7 +9,7 @@ namespace Stog.Domain.Models.Enumerations
     public enum Status
     {
        Pending,
-       InReview,
+       Rejected,
        Accepted
     }
 }

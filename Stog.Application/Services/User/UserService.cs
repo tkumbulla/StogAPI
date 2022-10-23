@@ -120,7 +120,8 @@ namespace Stog.Application.Services.User
                         CreatedOnUtc = currentUser.CreatedOnUtc,
                         IsActive = currentUser.IsActive,
                         Role = await GetUserRoleAsync(currentUser),
-                        UserName = currentUser.UserName
+                        UserName = currentUser.UserName,
+                        StudentId = currentUser.StudentId
                     };
                     return currentUserDetails;
                 }
@@ -163,6 +164,7 @@ namespace Stog.Application.Services.User
                 userDetails.VirtualPath = student.StudentCard?.VirtualPath;
                 userDetails.FileName = student.StudentCard?.Name;
                 userDetails.ContentType = student.StudentCard?.ContentType;
+                userDetails.StudentId = student.Id;
                 return userDetails;
             }
         }

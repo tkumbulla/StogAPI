@@ -166,8 +166,11 @@ namespace Stog.Application.Services.Authentication
                     claim.Type == ClaimTypes.Role &&
                     claim.Issuer.Equals(AuthenticationSettings.ClaimsIssuer, StringComparison.InvariantCultureIgnoreCase));
 
-                // means user is found
-                if (idClaim == null)
+            var studentIdClaim = authenticateResult.Principal.FindFirst(claim =>
+                    claim.Type == ClaimTypes.PrimarySid &&
+                    claim.Issuer.Equals(AuthenticationSettings.ClaimsIssuer, StringComparison.InvariantCultureIgnoreCase));
+            // means user is found
+            if (idClaim == null)
                     return null;
                 //throw new AuthenticationException("No user is logged in. (Claims not found)");
 
@@ -175,7 +178,8 @@ namespace Stog.Application.Services.Authentication
                 {
                     Id = Guid.Parse(idClaim.Value),
                     Name = nameClaim?.Value ?? "",
-                    Username = usernameClaim?.Value ?? ""
+                    Username = usernameClaim?.Value ?? "",
+                    StudentId = Guid.Parse(studentIdClaim?.Value ?? "")
                 };
                 return authenticatedUser;
         }
